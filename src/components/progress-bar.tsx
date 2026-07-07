@@ -19,7 +19,6 @@ export function ProgressBar() {
   );
 
   const progress = useMemo(() => {
-    if (TOTAL_CHAPTERS === 0) return 0;
     return (completedCount / TOTAL_CHAPTERS) * 100;
   }, [completedCount]);
 
