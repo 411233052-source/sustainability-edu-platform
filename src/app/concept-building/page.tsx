@@ -130,7 +130,7 @@ export default function ConceptBuildingPage() {
                 <Target className="h-5 w-5" />
               </span>
               <div className="min-w-0 flex-1">
-                <h3 className="text-lg font-bold text-zinc-900">涵蓋全面衝擊：淨零排放與氣候中和</h3>
+                <h3 className="text-lg font-bold text-zinc-900">涵蓋所有溫室氣體：淨零排放與氣候中和</h3>
                 <CardPointList items={FULL_IMPACT_POINTS} />
               </div>
             </div>
