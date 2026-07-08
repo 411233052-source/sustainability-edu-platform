@@ -273,7 +273,7 @@ export default function ActionQuantificationPage() {
         </p>
         <ChapterCompleteButton
           chapterId="action-quantification"
-          nextRoute={{ name: "企業漂綠防範與減碳職涯發展", path: "/macro-market" }}
+          nextRoute={{ name: "企業漂綠防範與永續職涯發展", path: "/macro-market" }}
         />
       </section>
     </section>

@@ -1,5 +1,5 @@
 /**
- * @fileoverview 通用減碳永續網站 — 第三章：企業漂綠防範與減碳職涯發展
+ * @fileoverview 通用減碳永續網站 — 第三章：企業漂綠防範與永續職涯發展
  * @project 通用減碳永續網站
  * @description 剖析企業不實減碳聲明的定義與公眾認知影響，並對齊國際碳管理準則探討專業核心職能。
  */
@@ -132,7 +132,7 @@ export default function MacroMarketPage() {
     <section className="space-y-10 rounded-2xl border border-zinc-200 bg-white p-8 shadow-md">
       <header>
         <h1 className="text-3xl font-bold tracking-tight text-emerald-700">
-          企業漂綠防範與減碳職涯發展
+          企業漂綠防範與永續職涯發展
         </h1>
         <p className="mt-3 text-zinc-600">
           剖析企業不實減碳聲明之定義與公眾認知影響，並對齊國際碳管理準則，探索淨零趨勢下之專業核心職能。

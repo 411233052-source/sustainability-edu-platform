@@ -81,28 +81,28 @@ type ClimateIndicatorRow = {
 const CLIMATE_INDICATOR_ROWS: readonly ClimateIndicatorRow[] = [
   {
     id: "zero-carbon",
-    name: "絕對零碳",
+    name: "絕對零碳 (Zero Carbon)",
     scope: "僅限二氧化碳",
     requirement: "運作過程完全不產生任何碳排放，不可抵銷。",
     application: "製程技術的最嚴格物理極限",
   },
   {
     id: "carbon-neutrality",
-    name: "碳中和",
+    name: "碳中和 (Carbon Neutrality)",
     scope: "僅限二氧化碳",
     requirement: "允許透過購買碳權或綠電，將排放量予以加減平衡。",
     application: "單一產品、服務或特定營運邊界",
   },
   {
     id: "net-zero",
-    name: "淨零排放",
+    name: "淨零排放 (Net Zero)",
     scope: "全溫室氣體",
     requirement: "排放極小化後，透過人為碳匯進行最終實質抵銷。",
     application: "目前全球法規與國家政策之基石",
   },
   {
     id: "climate-neutral",
-    name: "氣候中和",
+    name: "氣候中和 (Climate Neutral)",
     scope: "溫室氣體 + 物理效應",
     requirement: "消除溫室氣體，並涵蓋飛機凝結尾等非氣體衝擊。",
     application: "組織發展零環境衝擊的終極理想",
@@ -132,7 +132,7 @@ export default function ConceptBuildingPage() {
     <section className="space-y-10 rounded-2xl border border-zinc-200 bg-white p-8 shadow-md">
       <header>
         <h1 className="text-3xl font-bold tracking-tight text-emerald-700">
-          企業永續發展與氣候治理基礎
+          ESG歷史與淨零碳排
         </h1>
         <p className="mt-3 text-zinc-600">
           從企業社會責任的歷史演進，到淨零排放與碳中和的科學定義，建立氣候治理的高階商業常識。
@@ -183,7 +183,7 @@ export default function ConceptBuildingPage() {
 
       <section className="space-y-5">
         <div>
-          <h2 className="text-2xl font-semibold text-zinc-900">淨零碳排 vs. 碳中和</h2>
+          <h2 className="text-2xl font-semibold text-zinc-900">絕對零碳 vs. 碳中和 vs. 淨零排放 vs. 氣候中和</h2>
         </div>
         <div className="overflow-x-auto rounded-xl border border-zinc-200 bg-white shadow-sm mt-6 mb-8">
           <table className="w-full text-left text-sm md:text-base text-zinc-700">

@@ -5,9 +5,9 @@
  */
 
 export const CHAPTERS = [
-  { id: "concept-building", label: "企業永續發展與氣候治理基礎", href: "/concept-building" },
+  { id: "concept-building", label: "ESG歷史與淨零碳排", href: "/concept-building" },
   { id: "action-quantification", label: "溫室氣體盤查與綠色供應鏈管理", href: "/action-quantification" },
-  { id: "macro-market", label: "企業漂綠防範與減碳職涯發展", href: "/macro-market" },
+  { id: "macro-market", label: "企業漂綠防範與永續職涯發展", href: "/macro-market" },
 ] as const;
 
 export const TOTAL_CHAPTERS = CHAPTERS.length;
