@@ -5,6 +5,7 @@
  */
 
 import { ChapterCompleteButton } from "@/components/chapter-complete-button";
+import type { ReactNode } from "react";
 import {
   Boxes,
   CheckCircle2,
@@ -14,40 +15,146 @@ import {
   Truck,
 } from "lucide-react";
 
-const SCOPE_1_2_POINTS = [
-  "ISO 14064 規範：針對組織層級的溫室氣體排放與削減，提供定量、監督及報告的國際標準。",
-  "範疇一 (直接排放)：來自企業完全擁有或具備直接控制權的設施所產生的排放，如固定燃燒源或製程排放。",
-  "範疇二 (間接排放)：企業為維持營運，向外部購買能源而在發電階段所產生的間接排放。",
-] as const;
+type CardPoint = { id: string; node: ReactNode };
 
-const SCOPE_3_POINTS = [
-  "範疇三定義：不在範疇一、二之內，但因企業營運而在整個供應鏈上下游發生的間接排放。",
-  "排放占比：範疇三通常佔企業整體碳足跡的 70% 至 90% 以上，是綠色供應鏈管理的關鍵。",
-  "盤查難度：數據多掌握在外部供應商或消費者手中，極度依賴跨企業之協作與資訊透明度。",
-] as const;
+function Term({ children }: { children: ReactNode }) {
+  return <strong className="font-semibold text-zinc-900">{children}</strong>;
+}
 
-const GSCM_CHALLENGE_POINTS = [
-  "法規壓力：歐盟碳邊境調整機制 (CBAM) 等強制性法規推行，碳排放數據直接影響國際市場競爭力。",
-  "數據獲取瓶頸：供應鏈碳盤查面臨缺乏一手資料、品質參差不齊以及上下游重複計算的挑戰。",
-  "資訊科技應用：透過人工智慧 (AI) 結合區塊鏈技術，確保跨國供應鏈碳資訊的真實性與互通性。",
-] as const;
+const SCOPE_1_2_POINTS: readonly CardPoint[] = [
+  {
+    id: "iso-14064",
+    node: (
+      <>
+        <Term>ISO 14064 規範：</Term>
+        針對組織層級的溫室氣體排放與削減，提供定量、監督及報告的國際標準。
+      </>
+    ),
+  },
+  {
+    id: "scope-1",
+    node: (
+      <>
+        <Term>範疇一 (直接排放)：</Term>來自企業
+        <Term>完全擁有或具備直接控制權</Term>
+        的設施所產生的排放，如固定燃燒源或製程排放。
+      </>
+    ),
+  },
+  {
+    id: "scope-2",
+    node: (
+      <>
+        <Term>範疇二 (間接排放)：</Term>
+        企業為維持營運，向外部購買能源而在發電階段所產生的間接排放。
+      </>
+    ),
+  },
+];
 
-const PRECISION_DECISION_POINTS = [
-  "環保產品宣告 (EPD)：企業可要求供應商提供標準化的產品碳足跡數據，降低對產業平均值的依賴。",
-  "決策分析模型：導入如優劣解距離法 (TOPSIS) 等工具，客觀評估各項減碳策略的技術成熟度與預期成效。",
-  "供應商激勵機制：將碳績效納入篩選指標，透過優先採購權等機制提升整體供應鏈的氣候風險抗性。",
-] as const;
+const SCOPE_3_POINTS: readonly CardPoint[] = [
+  {
+    id: "scope-3-definition",
+    node: (
+      <>
+        <Term>範疇三定義：</Term>
+        不在範疇一、二之內，但因企業營運而在整個供應鏈上下游發生的間接排放。
+      </>
+    ),
+  },
+  {
+    id: "scope-3-ratio",
+    node: (
+      <>
+        <Term>排放占比：</Term>範疇三通常佔企業整體碳足跡的
+        <Term>70% 至 90% 以上</Term>，是綠色供應鏈管理的關鍵。
+      </>
+    ),
+  },
+  {
+    id: "scope-3-difficulty",
+    node: (
+      <>
+        <Term>盤查難度：</Term>
+        數據多掌握在外部供應商或消費者手中，極度依賴跨企業之協作與資訊透明度。
+      </>
+    ),
+  },
+];
 
-function CardPointList({ items }: { items: readonly string[] }) {
+const GSCM_CHALLENGE_POINTS: readonly CardPoint[] = [
+  {
+    id: "gscm-regulation",
+    node: (
+      <>
+        <Term>法規壓力：</Term>
+        <Term>歐盟碳邊境調整機制 (CBAM)</Term>
+        等強制性法規推行，碳排放數據直接影響國際市場競爭力。
+      </>
+    ),
+  },
+  {
+    id: "gscm-data",
+    node: (
+      <>
+        <Term>數據獲取瓶頸：</Term>
+        供應鏈碳盤查面臨缺乏一手資料、品質參差不齊以及上下游重複計算的挑戰。
+      </>
+    ),
+  },
+  {
+    id: "gscm-it",
+    node: (
+      <>
+        <Term>資訊科技應用：</Term>
+        透過人工智慧 (AI) 結合區塊鏈技術，確保跨國供應鏈碳資訊的真實性與互通性。
+      </>
+    ),
+  },
+];
+
+const PRECISION_DECISION_POINTS: readonly CardPoint[] = [
+  {
+    id: "decision-epd",
+    node: (
+      <>
+        <Term>環保產品宣告 (EPD)：</Term>
+        企業可要求供應商提供標準化的產品碳足跡數據，降低對產業平均值的依賴。
+      </>
+    ),
+  },
+  {
+    id: "decision-model",
+    node: (
+      <>
+        <Term>決策分析模型：</Term>導入如<Term>優劣解距離法 (TOPSIS)</Term>
+        等工具，客觀評估各項減碳策略的技術成熟度與預期成效。
+      </>
+    ),
+  },
+  {
+    id: "decision-incentive",
+    node: (
+      <>
+        <Term>供應商激勵機制：</Term>
+        將碳績效納入篩選指標，透過優先採購權等機制提升整體供應鏈的氣候風險抗性。
+      </>
+    ),
+  },
+];
+
+function CardPointList({ items }: { items: readonly CardPoint[] }) {
   return (
-    <ul className="mt-3 list-none space-y-3 p-0">
-      {items.map((text) => (
-        <li key={text} className="flex items-start gap-2">
+    <ul className="mt-6 list-none space-y-5 p-0">
+      {items.map((item) => (
+        <li key={item.id} className="flex items-start gap-2">
           <CheckCircle2
             className="mt-0.5 size-4 shrink-0 text-emerald-600"
             aria-hidden
           />
-          <span className="text-sm leading-relaxed text-zinc-700">{text}</span>
+          <span className="text-sm leading-relaxed text-zinc-600">
+            {item.node}
+          </span>
         </li>
       ))}
     </ul>
@@ -143,9 +250,23 @@ export default function ActionQuantificationPage() {
       <section className="mt-12 mb-8 rounded-r-xl border-l-4 border-slate-400 bg-slate-50 p-6 md:p-8">
         <h2 className="text-lg font-bold text-slate-800">本章精要</h2>
         <ul className="mt-4 space-y-3 text-sm leading-relaxed text-slate-700 md:text-base list-disc list-outside ml-5 marker:text-slate-400">
-          <li>溫室氣體盤查分為三大範疇，其中範疇三（價值鏈間接排放）佔比最高、盤查難度最大，為供應鏈管理之核心。</li>
-          <li>面對歐盟 CBAM 等國際經貿法規，缺乏精確的碳數據將直接削弱企業在國際市場中的競爭力。</li>
-          <li>企業須結合環保產品宣告 (EPD) 數據與多準則決策模型，在減碳效果、技術可行性與成本間找出最佳實務路徑。</li>
+          <li>
+            溫室氣體盤查分為三大範疇，其中
+            <strong className="font-semibold text-slate-900">範疇三（價值鏈間接排放）</strong>
+            佔比最高、盤查難度最大，為
+            <strong className="font-semibold text-slate-900">供應鏈管理之核心</strong>。
+          </li>
+          <li>
+            面對<strong className="font-semibold text-slate-900">歐盟 CBAM</strong>
+            等國際經貿法規，缺乏精確的碳數據將直接削弱企業在國際市場中的
+            <strong className="font-semibold text-slate-900">競爭力</strong>。
+          </li>
+          <li>
+            企業須結合
+            <strong className="font-semibold text-slate-900">環保產品宣告 (EPD)</strong>
+            數據與<strong className="font-semibold text-slate-900">多準則決策模型</strong>
+            ，在減碳效果、技術可行性與成本間找出最佳實務路徑。
+          </li>
         </ul>
       </section>
 

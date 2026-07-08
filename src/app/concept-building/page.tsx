@@ -5,6 +5,7 @@
  */
 
 import { ChapterCompleteButton } from "@/components/chapter-complete-button";
+import type { ReactNode } from "react";
 import {
   BrainCircuit,
   CheckCircle2,
@@ -14,40 +15,141 @@ import {
   Target,
 } from "lucide-react";
 
-const ESG_LETTERS_POINTS = [
-  "E (環境保護)：聚焦氣候變遷與溫室氣體減量等實質環境行動。",
-  "S (社會責任)：關注勞工權益、職業安全與社會公平正義。",
-  "G (公司治理)：強調董事會透明度、風險管理與企業商業道德。",
-] as const;
+type CardPoint = { id: string; node: ReactNode };
 
-const CSR_TO_ESG_POINTS = [
-  "傳統 CSR：偏向企業自願性的道德呼籲與社會公益投入。",
-  "現代 ESG：由聯合國責任投資原則 (PRI) 推動，成為評估企業風險與價值的核心框架。",
-  "減碳法制化：各國規範從自願揭露走向強制法規化，大幅提升企業遵循的急迫性。",
-] as const;
+function Term({ children }: { children: ReactNode }) {
+  return <strong className="font-semibold text-zinc-900">{children}</strong>;
+}
 
-const SINGLE_GAS_POINTS = [
-  "絕對零碳 (Zero Carbon)：要求特定製程或運作過程中完全不產生二氧化碳，屬於技術層面最嚴格的極端標準。",
-  "碳中和 (Carbon Neutrality)：聚焦二氧化碳之管理，允許企業透過引進再生能源或購買碳權，將產生之排放量予以互相抵銷。",
-  "應用差異：前者為零排放之最高物理境界；後者強調排放與清除的加減平衡，多應用於單一產品或特定營運邊界。",
-] as const;
+const ESG_LETTERS_POINTS: readonly CardPoint[] = [
+  {
+    id: "esg-e",
+    node: (
+      <>
+        <Term>E (環境保護)：</Term>聚焦氣候變遷與溫室氣體減量等實質環境行動。
+      </>
+    ),
+  },
+  {
+    id: "esg-s",
+    node: (
+      <>
+        <Term>S (社會責任)：</Term>關注勞工權益、職業安全與社會公平正義。
+      </>
+    ),
+  },
+  {
+    id: "esg-g",
+    node: (
+      <>
+        <Term>G (公司治理)：</Term>強調董事會透明度、風險管理與企業商業道德。
+      </>
+    ),
+  },
+];
 
-const FULL_IMPACT_POINTS = [
-  "淨零排放 (Net Zero)：管制擴及七大溫室氣體，要求排放極小化後，透過人為碳匯或負碳技術進行最終抵銷，為各國政策基石。",
-  "氣候中和 (Climate Neutral)：為最宏觀之終極理想，除溫室氣體外，更將所有人為活動對地球之物理暖化衝擊一併納入消除範圍。",
-  "核心區別：淨零著重於溫室氣體之絕對平衡；氣候中和則追求對地球環境達到無氣候衝擊的終極平衡狀態。",
-] as const;
+const CSR_TO_ESG_POINTS: readonly CardPoint[] = [
+  {
+    id: "csr-legacy",
+    node: (
+      <>
+        <Term>傳統 CSR：</Term>偏向企業自願性的道德呼籲與社會公益投入。
+      </>
+    ),
+  },
+  {
+    id: "csr-modern",
+    node: (
+      <>
+        <Term>現代 ESG：</Term>由<Term>聯合國責任投資原則 (PRI)</Term>
+        推動，成為評估企業風險與價值的核心框架。
+      </>
+    ),
+  },
+  {
+    id: "csr-legislation",
+    node: (
+      <>
+        <Term>減碳法制化：</Term>各國規範從自願揭露走向
+        <Term>強制法規化</Term>，大幅提升企業遵循的急迫性。
+      </>
+    ),
+  },
+];
 
-function CardPointList({ items }: { items: readonly string[] }) {
+const SINGLE_GAS_POINTS: readonly CardPoint[] = [
+  {
+    id: "single-zero-carbon",
+    node: (
+      <>
+        <Term>絕對零碳 (Zero Carbon)：</Term>
+        要求特定製程或運作過程中完全不產生二氧化碳，屬於技術層面最嚴格的極端標準。
+      </>
+    ),
+  },
+  {
+    id: "single-carbon-neutrality",
+    node: (
+      <>
+        <Term>碳中和 (Carbon Neutrality)：</Term>
+        聚焦二氧化碳之管理，允許企業透過引進再生能源或購買碳權，將產生之排放量予以
+        <Term>互相抵銷</Term>。
+      </>
+    ),
+  },
+  {
+    id: "single-difference",
+    node: (
+      <>
+        <Term>應用差異：</Term>前者為零排放之最高物理境界；後者強調排放與清除的
+        <Term>加減平衡</Term>，多應用於單一產品或特定營運邊界。
+      </>
+    ),
+  },
+];
+
+const FULL_IMPACT_POINTS: readonly CardPoint[] = [
+  {
+    id: "full-net-zero",
+    node: (
+      <>
+        <Term>淨零排放 (Net Zero)：</Term>管制擴及<Term>七大溫室氣體</Term>
+        ，要求排放極小化後，透過人為碳匯或負碳技術進行最終抵銷，為各國政策基石。
+      </>
+    ),
+  },
+  {
+    id: "full-climate-neutral",
+    node: (
+      <>
+        <Term>氣候中和 (Climate Neutral)：</Term>
+        為最宏觀之終極理想，除溫室氣體外，更將所有人為活動對地球之物理暖化衝擊一併納入消除範圍。
+      </>
+    ),
+  },
+  {
+    id: "full-difference",
+    node: (
+      <>
+        <Term>核心區別：</Term>淨零著重於溫室氣體之<Term>絕對平衡</Term>
+        ；氣候中和則追求對地球環境達到無氣候衝擊的終極平衡狀態。
+      </>
+    ),
+  },
+];
+
+function CardPointList({ items }: { items: readonly CardPoint[] }) {
   return (
-    <ul className="mt-3 list-none space-y-3 p-0">
-      {items.map((text) => (
-        <li key={text} className="flex items-start gap-2">
+    <ul className="mt-6 list-none space-y-5 p-0">
+      {items.map((item) => (
+        <li key={item.id} className="flex items-start gap-2">
           <CheckCircle2
             className="mt-0.5 size-4 shrink-0 text-emerald-600"
             aria-hidden
           />
-          <span className="text-sm leading-relaxed text-zinc-700">{text}</span>
+          <span className="text-sm leading-relaxed text-zinc-600">
+            {item.node}
+          </span>
         </li>
       ))}
     </ul>
@@ -155,9 +257,22 @@ export default function ConceptBuildingPage() {
       <section className="mt-12 mb-8 rounded-r-xl border-l-4 border-slate-400 bg-slate-50 p-6 md:p-8">
         <h2 className="text-lg font-bold text-slate-800">本章精要</h2>
         <ul className="mt-4 space-y-3 text-sm leading-relaxed text-slate-700 md:text-base list-disc list-outside ml-5 marker:text-slate-400">
-          <li>從 CSR 到 ESG，減碳已從自願性的道德公益，轉變為攸關企業生存的資本市場法規。</li>
-          <li>碳中和僅針對二氧化碳進行帳面抵銷；淨零排放則涵蓋所有溫室氣體且要求實質抵銷，為目前全球法規之基石。</li>
-          <li>氣候指標的嚴格程度，取決於管制氣體範圍的大小與抵銷機制的公信力。</li>
+          <li>
+            從 <strong className="font-semibold text-slate-900">CSR 到 ESG</strong>
+            ，減碳已從自願性的道德公益，轉變為攸關企業生存的
+            <strong className="font-semibold text-slate-900">資本市場法規</strong>。
+          </li>
+          <li>
+            <strong className="font-semibold text-slate-900">碳中和</strong>
+            僅針對二氧化碳進行帳面抵銷；
+            <strong className="font-semibold text-slate-900">淨零排放</strong>
+            則涵蓋所有溫室氣體且要求實質抵銷，為目前全球法規之基石。
+          </li>
+          <li>
+            氣候指標的嚴格程度，取決於
+            <strong className="font-semibold text-slate-900">管制氣體範圍的大小</strong>與
+            <strong className="font-semibold text-slate-900">抵銷機制的公信力</strong>。
+          </li>
         </ul>
       </section>
 

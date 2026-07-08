@@ -5,6 +5,7 @@
  */
 
 import { ChapterCompleteButton } from "@/components/chapter-complete-button";
+import type { ReactNode } from "react";
 import {
   AlertTriangle,
   Briefcase,
@@ -14,40 +15,145 @@ import {
   TrendingUp,
 } from "lucide-react";
 
-const GREENWASHING_POINTS = [
-  "核心屬性：企業無法證實其減碳或環保聲明，且具備欺騙意圖以獲取市場不當之競爭優勢。",
-  "傳統表現形式：包含隱藏權衡、語意模糊以及選擇性揭露微小減碳成效等行銷手段。",
-  "漂綠 2.0 (B2B)：蔓延至綠能產業與供應鏈，如誇大再生能源產能、節能設備效能造假與碳憑證欺詐等。",
-] as const;
+type CardPoint = { id: string; node: ReactNode };
 
-const PUBLIC_PERCEPTION_POINTS = [
-  "綠色懷疑論：頻繁的漂綠事件觸發公眾防禦機制，對企業的減碳宣稱產生普遍的懷疑感知。",
-  "企業偽善認知：當企業減碳廣告與實際高碳排之負面新聞產生不一致時，將嚴重損害企業公民形象。",
-  "關係建立斷裂：偽善認知不僅降低消費者的品牌態度，更會直接切斷公眾與企業維持長期關係的意願。",
-] as const;
+function Term({ children }: { children: ReactNode }) {
+  return <strong className="font-semibold text-zinc-900">{children}</strong>;
+}
 
-const COMPLIANCE_JOBS_POINTS = [
-  "企業減碳管理師：需精通 SASB 與 GRI 等國際準則，負責統籌上市櫃企業之溫室氣體減量策略。",
-  "永續管理與內部稽核：專注於非財務與碳排放數據的審計，維護公司治理合規標準，防範漂綠風險。",
-  "氣候風險管理人員：具備編製 TCFD 報告與氣候情境財務壓力測試之能力，為企業之核心風控防線。",
-] as const;
+const GREENWASHING_POINTS: readonly CardPoint[] = [
+  {
+    id: "gw-core",
+    node: (
+      <>
+        <Term>核心屬性：</Term>企業無法證實其減碳或環保聲明，且具備
+        <Term>欺騙意圖</Term>以獲取市場不當之競爭優勢。
+      </>
+    ),
+  },
+  {
+    id: "gw-forms",
+    node: (
+      <>
+        <Term>傳統表現形式：</Term>
+        包含隱藏權衡、語意模糊以及選擇性揭露微小減碳成效等行銷手段。
+      </>
+    ),
+  },
+  {
+    id: "gw-b2b",
+    node: (
+      <>
+        <Term>漂綠 2.0 (B2B)：</Term>
+        蔓延至綠能產業與供應鏈，如誇大再生能源產能、節能設備效能造假與碳憑證欺詐等。
+      </>
+    ),
+  },
+];
 
-const CARBON_FINANCE_JOBS_POINTS = [
-  "碳權交易與碳資產管理師：熟稔自願性碳減量市場規則與歐盟 CBAM 機制，具備碳金融商品交易與避險能力。",
-  "碳資訊確信審查員：掌握 IFRS S1/S2 氣候相關揭露準則與碳足跡量化數據，確保企業減碳報告之公信力。",
-  "第三方驗證機制：比照財務報表審計，碳盤查數據須經由獨立會計師或跨國驗證機構進行實質確信。",
-] as const;
+const PUBLIC_PERCEPTION_POINTS: readonly CardPoint[] = [
+  {
+    id: "pp-skepticism",
+    node: (
+      <>
+        <Term>綠色懷疑論：</Term>
+        頻繁的漂綠事件觸發公眾防禦機制，對企業的減碳宣稱產生普遍的懷疑感知。
+      </>
+    ),
+  },
+  {
+    id: "pp-hypocrisy",
+    node: (
+      <>
+        <Term>企業偽善認知：</Term>
+        當企業減碳廣告與實際高碳排之負面新聞產生不一致時，將嚴重損害企業公民形象。
+      </>
+    ),
+  },
+  {
+    id: "pp-relationship",
+    node: (
+      <>
+        <Term>關係建立斷裂：</Term>
+        偽善認知不僅降低消費者的品牌態度，更會直接切斷公眾與企業維持長期關係的意願。
+      </>
+    ),
+  },
+];
 
-function CardPointList({ items }: { items: readonly string[] }) {
+const COMPLIANCE_JOBS_POINTS: readonly CardPoint[] = [
+  {
+    id: "job-manager",
+    node: (
+      <>
+        <Term>企業減碳管理師：</Term>需精通<Term>SASB 與 GRI</Term>
+        等國際準則，負責統籌上市櫃企業之溫室氣體減量策略。
+      </>
+    ),
+  },
+  {
+    id: "job-audit",
+    node: (
+      <>
+        <Term>永續管理與內部稽核：</Term>
+        專注於非財務與碳排放數據的審計，維護公司治理合規標準，防範漂綠風險。
+      </>
+    ),
+  },
+  {
+    id: "job-risk",
+    node: (
+      <>
+        <Term>氣候風險管理人員：</Term>具備編製<Term>TCFD 報告</Term>
+        與氣候情境財務壓力測試之能力，為企業之核心風控防線。
+      </>
+    ),
+  },
+];
+
+const CARBON_FINANCE_JOBS_POINTS: readonly CardPoint[] = [
+  {
+    id: "fin-trading",
+    node: (
+      <>
+        <Term>碳權交易與碳資產管理師：</Term>熟稔自願性碳減量市場規則與
+        <Term>歐盟 CBAM 機制</Term>，具備碳金融商品交易與避險能力。
+      </>
+    ),
+  },
+  {
+    id: "fin-assurance",
+    node: (
+      <>
+        <Term>碳資訊確信審查員：</Term>掌握
+        <Term>IFRS S1/S2</Term>
+        氣候相關揭露準則與碳足跡量化數據，確保企業減碳報告之公信力。
+      </>
+    ),
+  },
+  {
+    id: "fin-verification",
+    node: (
+      <>
+        <Term>第三方驗證機制：</Term>比照財務報表審計，碳盤查數據須經由
+        <Term>獨立會計師或跨國驗證機構</Term>進行實質確信。
+      </>
+    ),
+  },
+];
+
+function CardPointList({ items }: { items: readonly CardPoint[] }) {
   return (
-    <ul className="mt-3 list-none space-y-3 p-0">
-      {items.map((text) => (
-        <li key={text} className="flex items-start gap-2">
+    <ul className="mt-6 list-none space-y-5 p-0">
+      {items.map((item) => (
+        <li key={item.id} className="flex items-start gap-2">
           <CheckCircle2
             className="mt-0.5 size-4 shrink-0 text-emerald-600"
             aria-hidden
           />
-          <span className="text-sm leading-relaxed text-zinc-700">{text}</span>
+          <span className="text-sm leading-relaxed text-zinc-600">
+            {item.node}
+          </span>
         </li>
       ))}
     </ul>
@@ -143,9 +249,23 @@ export default function MacroMarketPage() {
       <section className="mt-12 mb-8 rounded-r-xl border-l-4 border-slate-400 bg-slate-50 p-6 md:p-8">
         <h2 className="text-lg font-bold text-slate-800">本章精要</h2>
         <ul className="mt-4 space-y-3 text-sm leading-relaxed text-slate-700 md:text-base list-disc list-outside ml-5 marker:text-slate-400">
-          <li>不實減碳聲明（漂綠）會引發公眾的企業偽善認知，嚴重損害品牌的市場信任與長期關係。</li>
-          <li>國際監管正走向強制標準化，企業碳排放數據必須經過獨立的第三方確信審查以防範造假疑慮。</li>
-          <li>掌握 GRI、SASB、TCFD 等國際準則與碳盤查實務，為晉升永續管理與綠色金融專業職缺的關鍵核心能力。</li>
+          <li>
+            不實減碳聲明（漂綠）會引發公眾的
+            <strong className="font-semibold text-slate-900">企業偽善認知</strong>
+            ，嚴重損害品牌的
+            <strong className="font-semibold text-slate-900">市場信任與長期關係</strong>。
+          </li>
+          <li>
+            國際監管正走向強制標準化，企業碳排放數據必須經過
+            <strong className="font-semibold text-slate-900">獨立的第三方確信審查</strong>
+            以防範造假疑慮。
+          </li>
+          <li>
+            掌握
+            <strong className="font-semibold text-slate-900">GRI、SASB、TCFD 等國際準則</strong>
+            與碳盤查實務，為晉升永續管理與綠色金融專業職缺的
+            <strong className="font-semibold text-slate-900">關鍵核心能力</strong>。
+          </li>
         </ul>
       </section>
 
