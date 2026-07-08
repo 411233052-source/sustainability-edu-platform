@@ -140,6 +140,15 @@ export default function MacroMarketPage() {
         </details>
       </section>
 
+      <section className="mt-12 mb-8 rounded-r-xl border-l-4 border-slate-400 bg-slate-50 p-6 md:p-8">
+        <h2 className="text-lg font-bold text-slate-800">本章精要</h2>
+        <ul className="mt-4 space-y-3 text-sm leading-relaxed text-slate-700 md:text-base list-disc list-outside ml-5 marker:text-slate-400">
+          <li>不實減碳聲明（漂綠）會引發公眾的企業偽善認知，嚴重損害品牌的市場信任與長期關係。</li>
+          <li>國際監管正走向強制標準化，企業碳排放數據必須經過獨立的第三方確信審查以防範造假疑慮。</li>
+          <li>掌握 GRI、SASB、TCFD 等國際準則與碳盤查實務，為晉升永續管理與綠色金融專業職缺的關鍵核心能力。</li>
+        </ul>
+      </section>
+
       <section className="space-y-4">
         <p className="text-sm font-medium text-zinc-700">
           本章節學習結束。請點擊「完成此章節」記錄成就，並返回首頁。

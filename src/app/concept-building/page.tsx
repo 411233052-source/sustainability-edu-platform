@@ -26,16 +26,16 @@ const CSR_TO_ESG_POINTS = [
   "減碳法制化：各國規範從自願揭露走向強制法規化，大幅提升企業遵循的急迫性。",
 ] as const;
 
-const CARBON_NEUTRALITY_POINTS = [
-  "核心概念：企業將自身直接產生的碳排放量，透過購買等額的碳權進行抵換歸零。",
-  "實作機制：允許透過空間上的抵銷（如跨國界資助造林），在帳面上維持總量平衡。",
-  "應用層面：通常聚焦單一產品或特定服務，為企業邁向氣候目標的中短期過渡策略。",
+const SINGLE_GAS_POINTS = [
+  "絕對零碳 (Zero Carbon)：要求特定製程或運作過程中完全不產生二氧化碳，屬於技術層面最嚴格的極端標準。",
+  "碳中和 (Carbon Neutrality)：聚焦二氧化碳之管理，允許企業透過引進再生能源或購買碳權，將產生之排放量予以互相抵銷。",
+  "應用差異：前者為零排放之最高物理境界；後者強調排放與清除的加減平衡，多應用於單一產品或特定營運邊界。",
 ] as const;
 
-const NET_ZERO_POINTS = [
-  "科學定義：在特定期間內，全球人為溫室氣體排放量與人為移除量達到絕對平衡。",
-  "盤查邊界：涵蓋所有溫室氣體，並將整條價值鏈的間接排放全數納入評估範圍。",
-  "抵銷限制：化石燃料排放必須透過永久性碳封存技術抵銷，禁止僅依賴短期自然吸收。",
+const FULL_IMPACT_POINTS = [
+  "淨零排放 (Net Zero)：管制擴及七大溫室氣體，要求排放極小化後，透過人為碳匯或負碳技術進行最終抵銷，為各國政策基石。",
+  "氣候中和 (Climate Neutral)：為最宏觀之終極理想，除溫室氣體外，更將所有人為活動對地球之物理暖化衝擊一併納入消除範圍。",
+  "核心區別：淨零著重於溫室氣體之絕對平衡；氣候中和則追求對地球環境達到無氣候衝擊的終極平衡狀態。",
 ] as const;
 
 function CardPointList({ items }: { items: readonly string[] }) {
@@ -119,8 +119,8 @@ export default function ConceptBuildingPage() {
                 <Scale className="h-5 w-5" />
               </span>
               <div className="min-w-0 flex-1">
-                <h3 className="text-lg font-bold text-zinc-900">碳中和 (Carbon Neutrality)</h3>
-                <CardPointList items={CARBON_NEUTRALITY_POINTS} />
+                <h3 className="text-lg font-bold text-zinc-900">聚焦單一氣體：絕對零碳與碳中和</h3>
+                <CardPointList items={SINGLE_GAS_POINTS} />
               </div>
             </div>
           </article>
@@ -130,8 +130,8 @@ export default function ConceptBuildingPage() {
                 <Target className="h-5 w-5" />
               </span>
               <div className="min-w-0 flex-1">
-                <h3 className="text-lg font-bold text-zinc-900">淨零排放 (Net Zero)</h3>
-                <CardPointList items={NET_ZERO_POINTS} />
+                <h3 className="text-lg font-bold text-zinc-900">涵蓋全面衝擊：淨零排放與氣候中和</h3>
+                <CardPointList items={FULL_IMPACT_POINTS} />
               </div>
             </div>
           </article>
@@ -139,17 +139,26 @@ export default function ConceptBuildingPage() {
         <details className="group rounded-xl border border-zinc-300 bg-white p-4 shadow-sm focus-within:ring-2 focus-within:ring-emerald-500 focus-within:ring-offset-2 focus-within:ring-offset-slate-50">
           <summary
             className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-md font-semibold text-zinc-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50"
-            aria-label="展開或收合持久淨零與同類對同類原則的說明"
+            aria-label="展開或收合四大氣候指標之核心差異比較的說明"
           >
-            <span>進階探討：持久淨零與同類對同類原則</span>
+            <span>進階探討：四大氣候指標之核心差異比較</span>
             <ChevronDown className="h-4 w-4 transition group-open:rotate-180" />
           </summary>
           <div className="mt-4 border-t border-zinc-200 pt-4">
             <p className="text-sm leading-relaxed text-zinc-700">
-              氣候科學界強調，真正具公信力的淨零必須遵循「同類對同類 (like-for-like)」原則。源自岩石圈的長期碳排放必須透過地質碳封存實質抵銷，若過度依賴易受自然災害影響的生物圈碳匯，將引發漂綠 (Greenwashing) 疑慮。
+              依據國際規範，四大指標可由管制範圍與嚴格程度區分：絕對零碳與碳中和之管制對象僅限二氧化碳，前者追求製程零排放，後者允許多元抵銷。淨零排放涵蓋所有人為溫室氣體，為全球治理之核心；氣候中和則進一步將改變輻射強迫效應之非溫室氣體（如飛機凝結尾）納入考量，為組織發展的終極理想目標。
             </p>
           </div>
         </details>
+      </section>
+
+      <section className="mt-12 mb-8 rounded-r-xl border-l-4 border-slate-400 bg-slate-50 p-6 md:p-8">
+        <h2 className="text-lg font-bold text-slate-800">本章精要</h2>
+        <ul className="mt-4 space-y-3 text-sm leading-relaxed text-slate-700 md:text-base list-disc list-outside ml-5 marker:text-slate-400">
+          <li>從 CSR 到 ESG，減碳已從自願性的道德公益，轉變為攸關企業生存的資本市場法規。</li>
+          <li>碳中和僅針對二氧化碳進行帳面抵銷；淨零排放則涵蓋所有溫室氣體且要求實質抵銷，為目前全球法規之基石。</li>
+          <li>氣候指標的嚴格程度，取決於管制氣體範圍的大小與抵銷機制的公信力。</li>
+        </ul>
       </section>
 
       <section className="space-y-4">

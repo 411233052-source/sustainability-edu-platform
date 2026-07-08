@@ -140,6 +140,15 @@ export default function ActionQuantificationPage() {
         </details>
       </section>
 
+      <section className="mt-12 mb-8 rounded-r-xl border-l-4 border-slate-400 bg-slate-50 p-6 md:p-8">
+        <h2 className="text-lg font-bold text-slate-800">本章精要</h2>
+        <ul className="mt-4 space-y-3 text-sm leading-relaxed text-slate-700 md:text-base list-disc list-outside ml-5 marker:text-slate-400">
+          <li>溫室氣體盤查分為三大範疇，其中範疇三（價值鏈間接排放）佔比最高、盤查難度最大，為供應鏈管理之核心。</li>
+          <li>面對歐盟 CBAM 等國際經貿法規，缺乏精確的碳數據將直接削弱企業在國際市場中的競爭力。</li>
+          <li>企業須結合環保產品宣告 (EPD) 數據與多準則決策模型，在減碳效果、技術可行性與成本間找出最佳實務路徑。</li>
+        </ul>
+      </section>
+
       <section className="space-y-4">
         <p className="text-sm font-medium text-zinc-700">
           本章節學習結束。請點擊「完成此章節」進入下一單元。
