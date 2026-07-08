@@ -6,14 +6,7 @@
 
 import { ChapterCompleteButton } from "@/components/chapter-complete-button";
 import type { ReactNode } from "react";
-import {
-  Boxes,
-  CheckCircle2,
-  ChevronDown,
-  Factory,
-  Target,
-  Truck,
-} from "lucide-react";
+import { Boxes, CheckCircle2, ChevronDown, Target } from "lucide-react";
 
 type CardPoint = { id: string; node: ReactNode };
 
@@ -21,62 +14,68 @@ function Term({ children }: { children: ReactNode }) {
   return <strong className="font-semibold text-zinc-900">{children}</strong>;
 }
 
-const SCOPE_1_2_POINTS: readonly CardPoint[] = [
-  {
-    id: "iso-14064",
-    node: (
-      <>
-        <Term>ISO 14064 規範：</Term>
-        針對組織層級的溫室氣體排放與削減，提供定量、監督及報告的國際標準。
-      </>
-    ),
-  },
+type ScopeRow = {
+  id: string;
+  scope: ReactNode;
+  definition: string;
+  dataControl: ReactNode;
+  footprint: ReactNode;
+};
+
+const SCOPE_TABLE_ROWS: readonly ScopeRow[] = [
   {
     id: "scope-1",
-    node: (
-      <>
-        <Term>範疇一 (直接排放)：</Term>來自企業
-        <Term>完全擁有或具備直接控制權</Term>
-        的設施所產生的排放，如固定燃燒源或製程排放。
-      </>
+    scope: (
+      <div>
+        <span className="font-semibold text-zinc-900">範疇一</span>
+        <div className="text-sm text-zinc-500 mt-1">(直接排放)</div>
+      </div>
     ),
+    definition: "企業完全擁有或具備直接控制權之設施產生的排放（如自有工廠鍋爐、公務車）。",
+    dataControl: (
+      <div>
+        <span className="font-semibold text-zinc-900">極高</span>
+        <div className="text-sm text-zinc-500 mt-1">(具備內部一手數據)</div>
+      </div>
+    ),
+    footprint: "占比通常較低，為優先減量目標。",
   },
   {
     id: "scope-2",
-    node: (
-      <>
-        <Term>範疇二 (間接排放)：</Term>
-        企業為維持營運，向外部購買能源而在發電階段所產生的間接排放。
-      </>
+    scope: (
+      <div>
+        <span className="font-semibold text-zinc-900">範疇二</span>
+        <div className="text-sm text-zinc-500 mt-1">(間接排放)</div>
+      </div>
     ),
-  },
-];
-
-const SCOPE_3_POINTS: readonly CardPoint[] = [
-  {
-    id: "scope-3-definition",
-    node: (
-      <>
-        <Term>範疇三定義：</Term>
-        不在範疇一、二之內，但因企業營運而在整個供應鏈上下游發生的間接排放。
-      </>
+    definition: "企業為維持營運，向外部購買能源（如外購電力）而在發電階段產生的排放。",
+    dataControl: (
+      <div>
+        <span className="font-semibold text-zinc-900">高</span>
+        <div className="text-sm text-zinc-500 mt-1">(依賴外部電費單據)</div>
+      </div>
     ),
+    footprint: "占比視產業而定，依賴綠電採購。",
   },
   {
-    id: "scope-3-ratio",
-    node: (
-      <>
-        <Term>排放占比：</Term>範疇三通常佔企業整體碳足跡的
-        <Term>70% 至 90% 以上</Term>，是綠色供應鏈管理的關鍵。
-      </>
+    id: "scope-3",
+    scope: (
+      <div>
+        <span className="font-semibold text-zinc-900">範疇三</span>
+        <div className="text-sm text-zinc-500 mt-1">(價值鏈排放)</div>
+      </div>
     ),
-  },
-  {
-    id: "scope-3-difficulty",
-    node: (
+    definition:
+      "非屬範疇一二，但在企業營運之上下游價值鏈發生的所有間接排放（如員工通勤、原料採購）。",
+    dataControl: (
+      <div>
+        <span className="font-semibold text-zinc-900">極低</span>
+        <div className="text-sm text-zinc-500 mt-1">(依賴跨企業協作與資訊透明度)</div>
+      </div>
+    ),
+    footprint: (
       <>
-        <Term>盤查難度：</Term>
-        數據多掌握在外部供應商或消費者手中，極度依賴跨企業之協作與資訊透明度。
+        占比高達<Term>70% 至 90% 以上</Term>，為國際供應鏈管理之絕對核心。
       </>
     ),
   },
@@ -177,29 +176,27 @@ export default function ActionQuantificationPage() {
         <div>
           <h2 className="text-2xl font-semibold text-zinc-900">溫室氣體盤查的三大範疇</h2>
         </div>
-        <div className="grid gap-6 md:grid-cols-2">
-          <article className="flex h-full flex-col rounded-2xl border border-emerald-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-            <div className="flex flex-1 items-start gap-4">
-              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700">
-                <Factory className="h-5 w-5" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <h3 className="text-lg font-bold text-zinc-900">溫室氣體盤查標準與直接排放</h3>
-                <CardPointList items={SCOPE_1_2_POINTS} />
-              </div>
-            </div>
-          </article>
-          <article className="flex h-full flex-col rounded-2xl border border-emerald-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-            <div className="flex flex-1 items-start gap-4">
-              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700">
-                <Truck className="h-5 w-5" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <h3 className="text-lg font-bold text-zinc-900">價值鏈與其他間接排放</h3>
-                <CardPointList items={SCOPE_3_POINTS} />
-              </div>
-            </div>
-          </article>
+        <div className="overflow-x-auto rounded-xl border border-zinc-200 bg-white shadow-sm mt-6 mb-8">
+          <table className="w-full text-left text-sm md:text-base text-zinc-700">
+            <thead className="bg-emerald-50 font-bold text-emerald-900 border-b border-zinc-200">
+              <tr>
+                <th className="p-4">盤查範疇</th>
+                <th className="p-4">定義與排放來源</th>
+                <th className="p-4">數據掌握度</th>
+                <th className="p-4">碳足跡占比與管理特徵</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-zinc-100">
+              {SCOPE_TABLE_ROWS.map((row) => (
+                <tr key={row.id} className="hover:bg-zinc-50 transition-colors">
+                  <td className="p-4 leading-relaxed">{row.scope}</td>
+                  <td className="p-4 leading-relaxed">{row.definition}</td>
+                  <td className="p-4 leading-relaxed">{row.dataControl}</td>
+                  <td className="p-4 leading-relaxed">{row.footprint}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
 

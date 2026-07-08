@@ -6,14 +6,7 @@
 
 import { ChapterCompleteButton } from "@/components/chapter-complete-button";
 import type { ReactNode } from "react";
-import {
-  BrainCircuit,
-  CheckCircle2,
-  ChevronDown,
-  Leaf,
-  Scale,
-  Target,
-} from "lucide-react";
+import { BrainCircuit, CheckCircle2, ChevronDown, Leaf } from "lucide-react";
 
 type CardPoint = { id: string; node: ReactNode };
 
@@ -26,7 +19,7 @@ const ESG_LETTERS_POINTS: readonly CardPoint[] = [
     id: "esg-e",
     node: (
       <>
-        <Term>E (環境保護)：</Term>聚焦氣候變遷與溫室氣體減量等實質環境行動。
+        <Term>E (Environment, 環境保護)：</Term>聚焦氣候變遷與溫室氣體減量等實質環境行動。
       </>
     ),
   },
@@ -34,7 +27,7 @@ const ESG_LETTERS_POINTS: readonly CardPoint[] = [
     id: "esg-s",
     node: (
       <>
-        <Term>S (社會責任)：</Term>關注勞工權益、職業安全與社會公平正義。
+        <Term>S (Social, 社會責任)：</Term>關注勞工權益、職業安全與社會公平正義。
       </>
     ),
   },
@@ -42,7 +35,7 @@ const ESG_LETTERS_POINTS: readonly CardPoint[] = [
     id: "esg-g",
     node: (
       <>
-        <Term>G (公司治理)：</Term>強調董事會透明度、風險管理與企業商業道德。
+        <Term>G (Governance, 公司治理)：</Term>強調董事會透明度、風險管理與企業商業道德。
       </>
     ),
   },
@@ -77,64 +70,42 @@ const CSR_TO_ESG_POINTS: readonly CardPoint[] = [
   },
 ];
 
-const SINGLE_GAS_POINTS: readonly CardPoint[] = [
-  {
-    id: "single-zero-carbon",
-    node: (
-      <>
-        <Term>絕對零碳 (Zero Carbon)：</Term>
-        要求特定製程或運作過程中完全不產生二氧化碳，屬於技術層面最嚴格的極端標準。
-      </>
-    ),
-  },
-  {
-    id: "single-carbon-neutrality",
-    node: (
-      <>
-        <Term>碳中和 (Carbon Neutrality)：</Term>
-        聚焦二氧化碳之管理，允許企業透過引進再生能源或購買碳權，將產生之排放量予以
-        <Term>互相抵銷</Term>。
-      </>
-    ),
-  },
-  {
-    id: "single-difference",
-    node: (
-      <>
-        <Term>應用差異：</Term>前者為零排放之最高物理境界；後者強調排放與清除的
-        <Term>加減平衡</Term>，多應用於單一產品或特定營運邊界。
-      </>
-    ),
-  },
-];
+type ClimateIndicatorRow = {
+  id: string;
+  name: string;
+  scope: string;
+  requirement: string;
+  application: string;
+};
 
-const FULL_IMPACT_POINTS: readonly CardPoint[] = [
+const CLIMATE_INDICATOR_ROWS: readonly ClimateIndicatorRow[] = [
   {
-    id: "full-net-zero",
-    node: (
-      <>
-        <Term>淨零排放 (Net Zero)：</Term>管制擴及<Term>七大溫室氣體</Term>
-        ，要求排放極小化後，透過人為碳匯或負碳技術進行最終抵銷，為各國政策基石。
-      </>
-    ),
+    id: "zero-carbon",
+    name: "絕對零碳",
+    scope: "僅限二氧化碳",
+    requirement: "運作過程完全不產生任何碳排放，不可抵銷。",
+    application: "製程技術的最嚴格物理極限",
   },
   {
-    id: "full-climate-neutral",
-    node: (
-      <>
-        <Term>氣候中和 (Climate Neutral)：</Term>
-        為最宏觀之終極理想，除溫室氣體外，更將所有人為活動對地球之物理暖化衝擊一併納入消除範圍。
-      </>
-    ),
+    id: "carbon-neutrality",
+    name: "碳中和",
+    scope: "僅限二氧化碳",
+    requirement: "允許透過購買碳權或綠電，將排放量予以加減平衡。",
+    application: "單一產品、服務或特定營運邊界",
   },
   {
-    id: "full-difference",
-    node: (
-      <>
-        <Term>核心區別：</Term>淨零著重於溫室氣體之<Term>絕對平衡</Term>
-        ；氣候中和則追求對地球環境達到無氣候衝擊的終極平衡狀態。
-      </>
-    ),
+    id: "net-zero",
+    name: "淨零排放",
+    scope: "全溫室氣體",
+    requirement: "排放極小化後，透過人為碳匯進行最終實質抵銷。",
+    application: "目前全球法規與國家政策之基石",
+  },
+  {
+    id: "climate-neutral",
+    name: "氣候中和",
+    scope: "溫室氣體 + 物理效應",
+    requirement: "消除溫室氣體，並涵蓋飛機凝結尾等非氣體衝擊。",
+    application: "組織發展零環境衝擊的終極理想",
   },
 ];
 
@@ -214,29 +185,33 @@ export default function ConceptBuildingPage() {
         <div>
           <h2 className="text-2xl font-semibold text-zinc-900">淨零碳排 vs. 碳中和</h2>
         </div>
-        <div className="grid gap-6 md:grid-cols-2">
-          <article className="flex h-full flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-            <div className="flex flex-1 items-start gap-4">
-              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700">
-                <Scale className="h-5 w-5" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <h3 className="text-lg font-bold text-zinc-900">聚焦單一氣體：絕對零碳與碳中和</h3>
-                <CardPointList items={SINGLE_GAS_POINTS} />
-              </div>
-            </div>
-          </article>
-          <article className="flex h-full flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-            <div className="flex flex-1 items-start gap-4">
-              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700">
-                <Target className="h-5 w-5" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <h3 className="text-lg font-bold text-zinc-900">涵蓋所有溫室氣體：淨零排放與氣候中和</h3>
-                <CardPointList items={FULL_IMPACT_POINTS} />
-              </div>
-            </div>
-          </article>
+        <div className="overflow-x-auto rounded-xl border border-zinc-200 bg-white shadow-sm mt-6 mb-8">
+          <table className="w-full text-left text-sm md:text-base text-zinc-700">
+            <thead className="bg-emerald-50 font-bold text-emerald-900 border-b border-zinc-200">
+              <tr>
+                <th className="p-4">指標名稱</th>
+                <th className="p-4">管制氣體範圍</th>
+                <th className="p-4">核心要求與抵銷機制</th>
+                <th className="p-4">實務應用層次</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-zinc-100">
+              {CLIMATE_INDICATOR_ROWS.map((row) => (
+                <tr key={row.id} className="hover:bg-zinc-50 transition-colors">
+                  <td className="p-4 leading-relaxed">
+                    <strong className="font-semibold text-zinc-900">{row.name}</strong>
+                  </td>
+                  <td className="p-4 leading-relaxed">
+                    <span className="font-medium text-zinc-800">
+                      {row.scope}
+                    </span>
+                  </td>
+                  <td className="p-4 leading-relaxed">{row.requirement}</td>
+                  <td className="p-4 leading-relaxed">{row.application}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
         <details className="group rounded-xl border border-zinc-300 bg-white p-4 shadow-sm focus-within:ring-2 focus-within:ring-emerald-500 focus-within:ring-offset-2 focus-within:ring-offset-slate-50">
           <summary

@@ -6,14 +6,7 @@
 
 import { ChapterCompleteButton } from "@/components/chapter-complete-button";
 import type { ReactNode } from "react";
-import {
-  AlertTriangle,
-  Briefcase,
-  CheckCircle2,
-  ChevronDown,
-  ShieldCheck,
-  TrendingUp,
-} from "lucide-react";
+import { Briefcase, CheckCircle2, ChevronDown, TrendingUp } from "lucide-react";
 
 type CardPoint = { id: string; node: ReactNode };
 
@@ -21,61 +14,35 @@ function Term({ children }: { children: ReactNode }) {
   return <strong className="font-semibold text-zinc-900">{children}</strong>;
 }
 
-const GREENWASHING_POINTS: readonly CardPoint[] = [
-  {
-    id: "gw-core",
-    node: (
-      <>
-        <Term>核心屬性：</Term>企業無法證實其減碳或環保聲明，且具備
-        <Term>欺騙意圖</Term>以獲取市場不當之競爭優勢。
-      </>
-    ),
-  },
-  {
-    id: "gw-forms",
-    node: (
-      <>
-        <Term>傳統表現形式：</Term>
-        包含隱藏權衡、語意模糊以及選擇性揭露微小減碳成效等行銷手段。
-      </>
-    ),
-  },
-  {
-    id: "gw-b2b",
-    node: (
-      <>
-        <Term>漂綠 2.0 (B2B)：</Term>
-        蔓延至綠能產業與供應鏈，如誇大再生能源產能、節能設備效能造假與碳憑證欺詐等。
-      </>
-    ),
-  },
-];
+type GreenwashingRow = {
+  id: string;
+  level: string;
+  tactics: string;
+  impact: ReactNode;
+  countermeasure: ReactNode;
+};
 
-const PUBLIC_PERCEPTION_POINTS: readonly CardPoint[] = [
+const GREENWASHING_MATRIX_ROWS: readonly GreenwashingRow[] = [
   {
-    id: "pp-skepticism",
-    node: (
+    id: "b2c",
+    level: "傳統行銷漂綠 (B2C)",
+    tactics: "隱藏權衡、語意模糊、選擇性揭露微小減碳成效等行銷手段。",
+    impact: (
       <>
-        <Term>綠色懷疑論：</Term>
-        頻繁的漂綠事件觸發公眾防禦機制，對企業的減碳宣稱產生普遍的懷疑感知。
+        觸發公眾<Term>綠色懷疑論</Term>與<Term>企業偽善認知</Term>，嚴重損害品牌形象。
       </>
     ),
+    countermeasure: "廣告不實裁罰、強制標準化資訊揭露。",
   },
   {
-    id: "pp-hypocrisy",
-    node: (
+    id: "b2b",
+    level: "深度供應鏈漂綠 2.0 (B2B)",
+    tactics: "誇大綠能預期產能、節能設備效能造假、碳憑證欺詐等。",
+    impact: "切斷公眾與企業長期關係意願，引發系統性合規風險與抽單危機。",
+    countermeasure: (
       <>
-        <Term>企業偽善認知：</Term>
-        當企業減碳廣告與實際高碳排之負面新聞產生不一致時，將嚴重損害企業公民形象。
-      </>
-    ),
-  },
-  {
-    id: "pp-relationship",
-    node: (
-      <>
-        <Term>關係建立斷裂：</Term>
-        偽善認知不僅降低消費者的品牌態度，更會直接切斷公眾與企業維持長期關係的意願。
+        引入<Term>獨立第三方確信審查</Term>（如會計師或跨國驗證機構）、遵循
+        <Term>IFRS S1/S2</Term>準則。
       </>
     ),
   },
@@ -176,29 +143,29 @@ export default function MacroMarketPage() {
         <div>
           <h2 className="text-2xl font-semibold text-zinc-900">不實減碳聲明之辨識與影響</h2>
         </div>
-        <div className="grid gap-6 md:grid-cols-2">
-          <article className="flex h-full flex-col rounded-2xl border border-emerald-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-            <div className="flex flex-1 items-start gap-4">
-              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700">
-                <AlertTriangle className="h-5 w-5" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <h3 className="text-lg font-bold text-zinc-900">什麼是漂綠 (Greenwashing)？</h3>
-                <CardPointList items={GREENWASHING_POINTS} />
-              </div>
-            </div>
-          </article>
-          <article className="flex h-full flex-col rounded-2xl border border-emerald-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-            <div className="flex flex-1 items-start gap-4">
-              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700">
-                <ShieldCheck className="h-5 w-5" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <h3 className="text-lg font-bold text-zinc-900">不實減碳聲明之公眾認知影響</h3>
-                <CardPointList items={PUBLIC_PERCEPTION_POINTS} />
-              </div>
-            </div>
-          </article>
+        <div className="overflow-x-auto rounded-xl border border-zinc-200 bg-white shadow-sm mt-6 mb-8">
+          <table className="w-full text-left text-sm md:text-base text-zinc-700">
+            <thead className="bg-emerald-50 font-bold text-emerald-900 border-b border-zinc-200">
+              <tr>
+                <th className="p-4">漂綠層級 (Level)</th>
+                <th className="p-4">常見手法與特徵 (Tactics)</th>
+                <th className="p-4">信任危機與認知衝擊 (Impact)</th>
+                <th className="p-4">國際監管與確信對策 (Countermeasure)</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-zinc-100">
+              {GREENWASHING_MATRIX_ROWS.map((row) => (
+                <tr key={row.id} className="hover:bg-zinc-50 transition-colors">
+                  <td className="p-4 leading-relaxed">
+                    <strong className="font-semibold text-zinc-900">{row.level}</strong>
+                  </td>
+                  <td className="p-4 leading-relaxed">{row.tactics}</td>
+                  <td className="p-4 leading-relaxed">{row.impact}</td>
+                  <td className="p-4 leading-relaxed">{row.countermeasure}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
 
