@@ -15,6 +15,8 @@ type ChapterCompleteButtonProps = {
   nextRoute?: {
     name: string;
     path: string;
+    label?: string;
+    newTab?: boolean;
   };
 };
 
@@ -36,10 +38,13 @@ export function ChapterCompleteButton({ chapterId, nextRoute }: ChapterCompleteB
       {completed && nextRoute ? (
         <Link
           href={nextRoute.path}
+          {...(nextRoute.newTab
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
           className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50"
           aria-label={`前往${nextRoute.name}`}
         >
-          前往 {nextRoute.name} ➔
+          {nextRoute.label ?? `前往 ${nextRoute.name} ➔`}
         </Link>
       ) : null}
     </div>

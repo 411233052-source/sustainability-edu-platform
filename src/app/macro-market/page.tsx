@@ -250,9 +250,17 @@ export default function MacroMarketPage() {
 
       <section className="space-y-4">
         <p className="text-sm font-medium text-zinc-700">
-          本章節學習結束。請點擊「完成此章節」記錄成就，並返回首頁。
+          🎉 恭喜您完成所有永續學習章節！為了驗證學習成效，請點擊下方按鈕進行「最終實力檢測」。您的作答結果將是我們優化平台的寶貴數據。
         </p>
-        <ChapterCompleteButton chapterId="macro-market" nextRoute={{ name: "首頁", path: "/" }} />
+        <ChapterCompleteButton
+          chapterId="macro-market"
+          nextRoute={{
+            name: "後測問卷",
+            path: "#",
+            label: "📝 前往後測問卷 ➔",
+            newTab: true,
+          }}
+        />
       </section>
     </section>
   );
