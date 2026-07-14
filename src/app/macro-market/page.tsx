@@ -206,9 +206,21 @@ export default function MacroMarketPage() {
             <ChevronDown className="h-4 w-4 transition group-open:rotate-180" />
           </summary>
           <div className="mt-4 border-t border-zinc-200 pt-4">
-            <p className="text-sm leading-relaxed text-zinc-700">
-              國際法規正從「自願性揭露」全面轉向「強制化與標準化」。為根除減碳造假與漂綠現象，監管機構除要求引入強制性獨立第三方驗證機制外，亦鼓勵提升供應鏈動態碳數據的透明度與可追溯性，並結合公眾監督，建立嚴格的市場究責機制。
-            </p>
+            <div className="space-y-4 text-zinc-700 leading-relaxed text-sm md:text-base">
+              <p>
+                隨著全球永續發展走向法制化，準確診斷企業的漂綠行為並建立專業的綠領人才防線，已成為資本市場風險評估的核心。
+              </p>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>
+                  <strong className="font-semibold text-zinc-900">漂綠的嚴格診斷屬性與策略性手段：</strong>
+                  一項行為必須同時具備發起者為私營企業、行銷導向、無法證實性、欺騙意圖及追求競爭優勢等六項必要屬性，方構成嚴格意義上的漂綠。企業在 ESG 永續報告中，常透過「選擇性揭露」與「語意模糊」等修辭，誇大微小的綠色倡議，卻缺乏獨立第三方會計師事務所的審計與驗證。
+                </li>
+                <li>
+                  <strong className="font-semibold text-zinc-900">綠領核心專業職能與第三方確信：</strong>
+                  研究實證指出，通過第三方確信的永續報告能顯著降低企業的債務資金成本。面對嚴格的監管趨勢，企業極需具備大數據統計分析能力的氣候風險管理人員來編製 TCFD 報告並執行財務壓力測試，以及永續管理師精通 GRI 與 SASB 等國際準則，藉此維護公司治理的最高合規標準。
+                </li>
+              </ul>
+            </div>
           </div>
         </details>
       </section>

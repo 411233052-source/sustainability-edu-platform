@@ -222,9 +222,21 @@ export default function ConceptBuildingPage() {
             <ChevronDown className="h-4 w-4 transition group-open:rotate-180" />
           </summary>
           <div className="mt-4 border-t border-zinc-200 pt-4">
-            <p className="text-sm leading-relaxed text-zinc-700">
-              依據國際規範，四大指標可由管制範圍與嚴格程度區分：絕對零碳與碳中和之管制對象僅限二氧化碳，前者追求製程零排放，後者允許多元抵銷。淨零排放涵蓋所有人為溫室氣體，為全球治理之核心；氣候中和則進一步將改變輻射強迫效應之非溫室氣體（如飛機凝結尾）納入考量，為組織發展的終極理想目標。
-            </p>
+            <div className="space-y-4 text-zinc-700 leading-relaxed text-sm md:text-base">
+              <p>
+                淨零排放的推動必須建立在嚴謹的氣候科學與變革性的政策框架之上，以確保減碳的真實性與持久性。
+              </p>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>
+                  <strong className="font-semibold text-zinc-900">持久淨零與同類對同類原則：</strong>
+                  科學證據確立了升溫幅度與累積二氧化碳排放量成正比（TCRE）的線性關係。為防範漂綠，真正具公信力的淨零必須進行「同類對同類（like-for-like）」的平衡，意即企業燃燒化石燃料所產生源自岩石圈的長期碳排放，必須透過地質碳封存（CCS）等永久性技術進行實質抵銷，而非僅依賴短期內易受破壞的生物圈自然吸收。
+                </li>
+                <li>
+                  <strong className="font-semibold text-zinc-900">變革型產業政策與公正轉型：</strong>
+                  針對鋼鐵與石化等高耗能重工業，初期的能源效率提升無法促成深層脫碳，必須導入製程電氣化與綠氫等根本性技術革新。同時，政府需推行過渡期援助政策（TAP），透過補償、技能再培訓與全面調適支持，確保高碳排產業勞工在轉型過程中不被遺落，達成公正轉型。
+                </li>
+              </ul>
+            </div>
           </div>
         </details>
       </section>

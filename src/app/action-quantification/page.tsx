@@ -237,9 +237,21 @@ export default function ActionQuantificationPage() {
             <ChevronDown className="h-4 w-4 transition group-open:rotate-180" />
           </summary>
           <div className="mt-4 border-t border-zinc-200 pt-4">
-            <p className="text-sm leading-relaxed text-zinc-700">
-              組織碳盤查通常遵循「由下而上 (Bottom-up)」原則，涵蓋邊界設定、排放源鑑別、活動數據蒐集與轉換。企業在評估設備更新或建置綠電等方案時，需綜合考量可行性 (Feasibility)、減碳效果 (Reduction Effectiveness) 與實施成本 (Implementation Cost)，以決定最適切的減碳路徑。
-            </p>
+            <div className="space-y-4 text-zinc-700 leading-relaxed text-sm md:text-base">
+              <p>
+                組織碳盤查通常遵循「由下而上」的原則，面對佔企業整體碳足跡極高比例的價值鏈（範疇三）排放，必須仰賴科學化決策與新興科技的整合。
+              </p>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>
+                  <strong className="font-semibold text-zinc-900">減碳策略之多準則決策評估 (MCDM)：</strong>
+                  盤查的最終目的為推動實質減碳。企業在面臨多元減碳方案時，可導入優劣解距離法（TOPSIS）等多準則決策分析工具，在「可行性（技術成熟度）」、「減碳效果」與「實施成本」三大經常衝突的維度中進行客觀排序，找出最適切的轉型路徑。
+                </li>
+                <li>
+                  <strong className="font-semibold text-zinc-900">資訊互通性與環保產品宣告 (EPD)：</strong>
+                  供應鏈碳會計面臨缺乏一手資料與重複計算的瓶頸。解決方案在於利用人工智慧進行預測，結合區塊鏈技術確保碳足跡數據的不可竄改性，並要求供應商提供標準化的環保產品宣告（EPD）作為數據積木，協助核心企業精確堆疊出整體的供應鏈碳排。
+                </li>
+              </ul>
+            </div>
           </div>
         </details>
       </section>
