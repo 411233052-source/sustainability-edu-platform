@@ -7,6 +7,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useProgress } from "@/components/progress-provider";
 import type { ChapterId } from "@/lib/chapters";
 
@@ -22,7 +23,13 @@ type ChapterCompleteButtonProps = {
 
 export function ChapterCompleteButton({ chapterId, nextRoute }: ChapterCompleteButtonProps) {
   const { isCompleted, markChapterCompleted } = useProgress();
-  const completed = isCompleted(chapterId);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const completed = mounted ? isCompleted(chapterId) : false;
 
   return (
     <div className="mt-8 flex flex-col gap-3 md:flex-row md:items-center">
