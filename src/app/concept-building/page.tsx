@@ -135,7 +135,7 @@ export default function ConceptBuildingPage() {
           ESG歷史與淨零碳排
         </h1>
         <p className="mt-3 text-zinc-600">
-          從企業社會責任的歷史演進，到淨零排放與碳中和的科學定義，建立氣候治理的高階商業常識。
+          從企業社會責任之歷史演進，探討淨零排放與碳中和之科學定義，藉此建構氣候治理之核心知識體系。
         </p>
       </header>
 

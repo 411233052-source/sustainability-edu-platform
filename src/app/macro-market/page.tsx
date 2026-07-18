@@ -147,14 +147,14 @@ export default function MacroMarketPage() {
 
       <section className="space-y-4">
         <p className="text-sm font-medium text-zinc-700">
-          🎉 恭喜您完成所有永續學習章節！為了驗證學習成效，請點擊下方按鈕進行「最終實力檢測」。您的作答結果將是我們優化平台的寶貴數據。
+          本模組所有永續學習章節已告一段落。為客觀評估學習成效與知識吸收度，請點擊下方按鈕進入「後測問卷」系統。各項測驗數據將作為後續優化本教育平台之重要學術參考。
         </p>
         <ChapterCompleteButton
           chapterId="macro-market"
           nextRoute={{
             name: "後測問卷",
             path: "https://docs.google.com/forms/d/e/1FAIpQLSdTzm8j7UlDDUngYjnFGVm832i6Qh9tJ9X4-WTp0SZmoZsFnQ/viewform",
-            label: "📝 前往後測問卷 ➔",
+            label: "前往後測問卷 ➔",
             newTab: true,
           }}
         />
